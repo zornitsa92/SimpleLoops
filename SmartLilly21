@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SmartLilly21
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int age = int.Parse(Console.ReadLine());
+            double washingPrice = double.Parse(Console.ReadLine());
+            int toyPrice = int.Parse(Console.ReadLine());
+
+            int toys = 0;
+            int savedMoney = 0; 
+            int moneyForBirthday = 0;           
+                      
+
+            for (int i = 1; i <= age; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    moneyForBirthday += 10;
+                    savedMoney += (moneyForBirthday - 1);                    
+                }
+                else
+                {
+                    toys++;
+                }
+            }
+
+            double totalMoney = (toys * toyPrice) + (savedMoney);
+
+            if (washingPrice <= totalMoney)
+            {
+                double change = totalMoney - washingPrice;
+                Console.WriteLine("Yes! {0:F2}", change);
+            }
+            else
+            {
+                double change = washingPrice - totalMoney;
+                Console.WriteLine("No! {0:F2}", change);
+            }
+        }
+    }
+}

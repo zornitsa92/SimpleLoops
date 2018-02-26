@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Hospital
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int period = int.Parse(Console.ReadLine());
+
+            int treated = 0;
+            int untreated = 0;
+            int countOfDoctors = 7;
+
+            for (int day = 1; day <= period; day++)
+            {
+                int patientsForDay = int.Parse(Console.ReadLine());
+
+                if (day % 3 == 0 && untreated > treated)
+                {
+                    countOfDoctors++;
+                }
+
+                if (patientsForDay > countOfDoctors)
+                {
+                    treated += countOfDoctors;
+                    untreated += patientsForDay - countOfDoctors;
+                                        
+                }
+                else 
+                {
+                    treated += patientsForDay;
+                }
+                
+            }
+            Console.WriteLine($"Treated patients: {treated}.");
+            Console.WriteLine($"Untreated patients: {untreated}.");
+
+        }
+    }
+}

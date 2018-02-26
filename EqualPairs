@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EqualPairs
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+            int couple = 0;
+            int maxDiff = int.MinValue;
+
+            for (int i = 0; i < n; i++)
+            {
+
+                int firstNum = int.Parse(Console.ReadLine());
+                int secondNum = int.Parse(Console.ReadLine());
+
+                int sum = firstNum + secondNum;
+
+                if (i == 0)
+                {
+                    couple = sum;
+                }
+                else if (sum != couple)
+                {
+                    int diff = Math.Abs(couple - sum);
+                    if (diff > maxDiff)
+                    {
+                        maxDiff = diff;
+                    }
+                    couple = sum;
+                }
+            }
+
+            if (maxDiff == int.MinValue)
+            {
+                Console.WriteLine($"Yes, value = {couple}");
+            }
+            else
+            {
+                Console.WriteLine($"No, maxDiff = {maxDiff}");
+            }
+        }
+    }
+}

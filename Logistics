@@ -1,0 +1,53 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Logistics
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int countOfLoads = int.Parse(Console.ReadLine());
+
+            
+            double sumOfTons = 0;
+            int microbusTons = 0;
+            int truckTons = 0;
+            int trainTons = 0;
+            int price = 0;
+            
+
+            for (int i = 0; i <= countOfLoads - 1; i++)
+            {
+                int tons = int.Parse(Console.ReadLine());
+                sumOfTons += tons;
+
+                if (tons < 4)
+                {
+                    microbusTons += tons;
+                    price += tons * 200;
+                }
+                else if (tons < 12)
+                {
+                    truckTons += tons;
+                    price += tons * 175;
+                }
+                else
+                {
+                    trainTons += tons;
+                    price += tons * 120;
+                }                
+            }
+            double middlePrice = price / sumOfTons;
+            
+            Console.WriteLine($"{middlePrice:f2}");
+            Console.WriteLine($"{microbusTons * 100.0 / sumOfTons:f2}%");
+            Console.WriteLine($"{truckTons * 100.0 / sumOfTons:f2}%");
+            Console.WriteLine($"{trainTons * 100.0 / sumOfTons:f2}%");
+        }
+
+    }
+}
